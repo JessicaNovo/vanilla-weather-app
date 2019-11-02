@@ -24,8 +24,8 @@
         <div class="row align-items-center">
           <div class="col-sm-3">
             <h1 id="city"></h1>
-            <h2>Friday, Nov 1</h2>
-            <p class="time">Last updated: 18:40</p>
+            <h2 id="date"></h2>
+            <p class="time">Last updated: <span id="time"></span></p>
           </div>
           <div class="col-sm-6 weather">
             <img
@@ -46,12 +46,11 @@
           </div>
           <div class="col-sm-3 weather-details">
             <ul>
-              <li>Sunrise: 7:00</li>
-              <li>Sunset: 19:00</li>
+              <li>Sunrise: <span id="sunrise"></span></li>
+              <li>Sunset: <span id="sunset"></span></li>
             </ul>
             <br />
             <ul>
-              <li>Precipitation: <span id="precipitation"></span>%</li>
               <li>Humidity: <span id="humidity"></span>%</li>
               <li>Wind: <span id="wind"></span> km/h</li>
             </ul>
