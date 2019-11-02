@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Weather App</title>
     <link
+      href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -15,31 +19,34 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-4">
-          <h1>Póvoa de Varzim</h1>
-          <h2>Friday, Nov 1</h2>
-          <p>18:40</p>
-        </div>
-        <div class="col-4">
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
-            alt="Cloudy"
-          />
-          <p>Cloudy</p>
-          <p>18 <small>ºC | ºF</small></p>
-          <p>19º | 22º</p>
-        </div>
-        <div class="col-4">
-          <ul>
-            <li>Sunrise: 7:00</li>
-            <li>Sunset: 19:00</li>
-          </ul>
-          <ul>
-            <li>Precipitation: 0%</li>
-            <li>Humidity: 80%</li>
-            <li>Wind: 3 km/h</li>
-          </ul>
+      <div class="weather-app">
+        <div class="row align-items-center">
+          <div class="col-sm-3">
+            <h1 class="city">Póvoa de Varzim</h1>
+            <h2 class="day">Friday, Nov 1</h2>
+            <p class="time">Last updated: 18:40</p>
+          </div>
+          <div class="col-sm-6 weather">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
+              alt="Cloudy"
+            />
+            <p>Cloudy</p>
+            <p>18 <small>ºC | ºF</small></p>
+            <small>19º | 22º</small>
+          </div>
+          <div class="col-sm-3 weather-details">
+            <ul>
+              <li>Sunrise: 7:00</li>
+              <li>Sunset: 19:00</li>
+            </ul>
+            <br />
+            <ul>
+              <li>Precipitation: 0%</li>
+              <li>Humidity: 80%</li>
+              <li>Wind: 3 km/h</li>
+            </ul>
+          </div>
         </div>
       </div>
       <span
