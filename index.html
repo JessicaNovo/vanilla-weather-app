@@ -15,6 +15,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
@@ -22,8 +23,8 @@
       <div class="weather-app">
         <div class="row align-items-center">
           <div class="col-sm-3">
-            <h1 class="city">Póvoa de Varzim</h1>
-            <h2 class="day">Friday, Nov 1</h2>
+            <h1 id="city"></h1>
+            <h2>Friday, Nov 1</h2>
             <p class="time">Last updated: 18:40</p>
           </div>
           <div class="col-sm-6 weather">
@@ -31,14 +32,17 @@
               src="https://cdn1.iconfinder.com/data/icons/weather-forecast-meteorology-color-1/128/weather-partly-cloudy-512.png"
               alt="Cloudy"
             />
-            <span class="weather-description">Cloudy</span>
+            <span class="weather-description" id="description"></span>
             <div class="weather-container">
-              <span class="temperature">18</span
+              <span class="temperature" id="current-temperature"></span
               ><small class="degrees"
                 ><a href="#">ºC</a> | <a href="#">ºF</a></small
               >
             </div>
-            <span class="min-max-temp">19º | 22º</span>
+            <div class="min-max-temp">
+              <span id="minimum-temperature"></span>º |
+              <span id="maximum-temperature"></span>º
+            </div>
           </div>
           <div class="col-sm-3 weather-details">
             <ul>
@@ -47,9 +51,9 @@
             </ul>
             <br />
             <ul>
-              <li>Precipitation: 0%</li>
-              <li>Humidity: 80%</li>
-              <li>Wind: 3 km/h</li>
+              <li>Precipitation: <span id="precipitation"></span>%</li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> km/h</li>
             </ul>
           </div>
         </div>
