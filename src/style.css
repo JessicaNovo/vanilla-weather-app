@@ -1,5 +1,5 @@
 .container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 50px auto;
   font-family: "Titillium Web", sans-serif;
   color: #010038;
@@ -12,25 +12,28 @@
   padding: 30px;
 }
 
+form {
+  margin-bottom: 5px;
+}
+
 h1 {
-  font-size: 28px;
-  font-weight: 100;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 100;
 }
 
 .time {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .weather {
   display: block;
   text-align: center;
-  padding-left: 20px;
 }
 
 .weather img {
@@ -77,7 +80,6 @@ h2 {
   text-align: left;
   font-size: 16px;
   font-weight: 100;
-  padding-left: 50px;
 }
 
 .weather-details ul {

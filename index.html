@@ -21,14 +21,24 @@
   <body>
     <div class="container">
       <div class="weather-app">
+        <form id="search-city">
+          <input
+            type="search"
+            placeholder="Search a city"
+            autocomplete="off"
+            id="city-input"
+          />
+          <input type="submit" value="Search" />
+        </form>
         <div class="row align-items-center">
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <h1 id="city"></h1>
+            <h2 id="week-day"></h2>
             <h2 id="date"></h2>
             <p class="time">Last updated: <span id="time"></span></p>
           </div>
-          <div class="col-sm-6 weather">
-            <img src="" alt="Cloudy" id="icon" />
+          <div class="col-sm-5 weather">
+            <img src="" alt="" id="icon" />
             <span class="weather-description" id="description"></span>
             <div class="weather-container">
               <span class="temperature" id="current-temperature"></span

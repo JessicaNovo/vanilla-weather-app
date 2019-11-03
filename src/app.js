@@ -1,3 +1,12 @@
+function getWeather(city) {
+  let apiKey = "0438fc32e86f8783300a37cf62f26092";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayWeather);
+  axios.get(apiUrl).then(convertUpdatedTime);
+  axios.get(apiUrl).then(convertSunHours);
+}
+
 function showCurrentDate() {
   let now = new Date();
   let weekDays = [
@@ -28,7 +37,8 @@ function showCurrentDate() {
   let day = now.getDate();
   let date = document.querySelector("#date");
 
-  date.innerHTML = `${today}, ${month} ${day}`;
+  document.querySelector("#week-day").innerHTML = `${today}`;
+  date.innerHTML = `${month} ${day}`;
 }
 
 function convertUpdatedTime(response) {
@@ -48,7 +58,7 @@ function convertUpdatedTime(response) {
 
 function displayWeather(response) {
   let temperature = document.querySelector("#current-temperature");
-  let cityName = document.querySelector("#city");
+  let city = document.querySelector("#city");
   let weatherDescription = document.querySelector("#description");
   let minimumTemperature = document.querySelector("#minimum-temperature");
   let maximumTemperature = document.querySelector("#maximum-temperature");
@@ -58,7 +68,8 @@ function displayWeather(response) {
   let iconCode = response.data.weather[0].icon;
 
   temperature.innerHTML = Math.round(response.data.main.temp);
-  cityName.innerHTML = response.data.name;
+  city.innerHTML = response.data.name;
+
   weatherDescription.innerHTML = response.data.weather[0].main;
   minimumTemperature.innerHTML = Math.round(response.data.main.temp_min);
   maximumTemperature.innerHTML = Math.round(response.data.main.temp_max);
@@ -100,12 +111,14 @@ function convertSunHours(response) {
   sunset.innerHTML = `${sunsetHour}:${sunsetMin}`;
 }
 
-let apiKey = "0438fc32e86f8783300a37cf62f26092";
-let city = "Póvoa de Varzim";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  getWeather(cityInput.value);
+}
 
-axios.get(apiUrl).then(displayWeather);
-axios.get(apiUrl).then(convertUpdatedTime);
-axios.get(apiUrl).then(convertSunHours);
-
+getWeather("Póvoa de Varzim");
 showCurrentDate();
+
+let form = document.querySelector("#search-city");
+form.addEventListener("submit", search);
