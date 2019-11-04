@@ -76,11 +76,11 @@ h2 {
 }
 
 .weather {
-  display: block;
   text-align: center;
 }
 
 .weather img {
+  display: block;
   width: 100px;
   height: 100px;
   margin: 0 auto;
@@ -91,14 +91,6 @@ h2 {
   font-size: 14px;
   font-weight: 100;
   line-height: 1;
-  text-align: center;
-}
-
-.min-max-temp {
-  display: block;
-  margin: 0 auto;
-  font-size: 16px;
-  font-weight: 500;
 }
 
 .temperature {
@@ -146,7 +138,7 @@ h2 {
 
 hr {
   border: 1px solid #537ec5;
-  margin: 30px auto;
+  margin: 10px auto;
 }
 
 .forecast {
@@ -155,6 +147,7 @@ hr {
 }
 
 .forecast img {
+  display: block;
   width: 50px;
   margin: 0 auto;
 }

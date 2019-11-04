@@ -49,8 +49,6 @@ function displayWeather(response) {
   let currentTemperature = document.querySelector("#current-temperature");
   let city = document.querySelector("#city");
   let weatherDescription = document.querySelector("#description");
-  let minimumTemperature = document.querySelector("#minimum-temperature");
-  let maximumTemperature = document.querySelector("#maximum-temperature");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let weatherIcon = document.querySelector("#icon");
@@ -63,8 +61,6 @@ function displayWeather(response) {
   city.innerHTML = response.data.name;
 
   weatherDescription.innerHTML = response.data.weather[0].main;
-  minimumTemperature.innerHTML = Math.round(response.data.main.temp_min);
-  maximumTemperature.innerHTML = Math.round(response.data.main.temp_max);
   humidity.innerHTML = Math.round(response.data.main.humidity);
   wind.innerHTML = Math.round(response.data.wind.speed);
   weatherIcon.setAttribute(
@@ -85,7 +81,7 @@ function displayForecast(response) {
   for (let index = 0; index < 6; index++) {
     forecastResults = response.data.list[index];
     forecast.innerHTML += `
-      <div class="col-2">
+      <div class="col-sm-2">
         <span><strong>${Math.round(
           forecastResults.main.temp_max
         )}º </strong>${Math.round(forecastResults.main.temp_min)}º</span>
