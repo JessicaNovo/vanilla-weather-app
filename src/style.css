@@ -12,6 +12,10 @@
   padding: 30px;
 }
 
+.search {
+  margin-bottom: 20px;
+}
+
 input[type="search"] {
   padding: 5px;
   border: 1px solid #537ec5;
