@@ -1,12 +1,3 @@
-function getWeather(city) {
-  let apiKey = "0438fc32e86f8783300a37cf62f26092";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-  axios.get(apiUrl).then(displayWeather);
-  axios.get(apiUrl).then(convertUpdatedTime);
-  axios.get(apiUrl).then(convertSunHours);
-}
-
 function showCurrentDate() {
   let now = new Date();
   let weekDays = [
@@ -56,8 +47,17 @@ function convertUpdatedTime(response) {
   lastUpdatedTime.innerHTML = `${hour}:${minutes}`;
 }
 
+function getWeather(city) {
+  let apiKey = "0438fc32e86f8783300a37cf62f26092";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayWeather);
+  axios.get(apiUrl).then(convertUpdatedTime);
+  axios.get(apiUrl).then(convertSunHours);
+}
+
 function displayWeather(response) {
-  let temperature = document.querySelector("#current-temperature");
+  let currentTemperature = document.querySelector("#current-temperature");
   let city = document.querySelector("#city");
   let weatherDescription = document.querySelector("#description");
   let minimumTemperature = document.querySelector("#minimum-temperature");
@@ -67,7 +67,9 @@ function displayWeather(response) {
   let weatherIcon = document.querySelector("#icon");
   let iconCode = response.data.weather[0].icon;
 
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  degreesCelsius = response.data.main.temp;
+
+  currentTemperature.innerHTML = Math.round(degreesCelsius);
   city.innerHTML = response.data.name;
 
   weatherDescription.innerHTML = response.data.weather[0].main;
@@ -117,8 +119,29 @@ function search(event) {
   getWeather(cityInput.value);
 }
 
-getWeather("Póvoa de Varzim");
-showCurrentDate();
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  let degreesFahrenheit = degreesCelsius * (9 / 5) + 32;
+  currentTemperature.innerHTML = Math.round(degreesFahrenheit);
+}
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  currentTemperature.innerHTML = Math.round(degreesCelsius);
+}
+
+let degreesCelsius = null;
 
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", search);
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", convertToCelsius);
+
+getWeather("Póvoa de Varzim");
+showCurrentDate();
