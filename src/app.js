@@ -47,13 +47,36 @@ function convertUpdatedTime(response) {
   lastUpdatedTime.innerHTML = `${hour}:${minutes}`;
 }
 
-function getWeather(city) {
-  let apiKey = "0438fc32e86f8783300a37cf62f26092";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  getWeather(cityInput.value);
+}
 
+function getCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+function showPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "0438fc32e86f8783300a37cf62f26092";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
   axios.get(apiUrl).then(convertUpdatedTime);
   axios.get(apiUrl).then(convertSunHours);
+}
+function getWeather(city) {
+  if (city === "") {
+    return false;
+  } else {
+    let apiKey = "0438fc32e86f8783300a37cf62f26092";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(displayWeather);
+    axios.get(apiUrl).then(convertUpdatedTime);
+    axios.get(apiUrl).then(convertSunHours);
+  }
 }
 
 function displayWeather(response) {
@@ -83,6 +106,7 @@ function displayWeather(response) {
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
   celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
 }
 
 function convertSunHours(response) {
@@ -114,12 +138,6 @@ function convertSunHours(response) {
   sunset.innerHTML = `${sunsetHour}:${sunsetMin}`;
 }
 
-function search(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#city-input");
-  getWeather(cityInput.value);
-}
-
 function convertToFahrenheit(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temperature");
@@ -147,6 +165,9 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", convertToCelsius);
+
+let current = document.querySelector("#current");
+current.addEventListener("click", getCurrentLocation);
 
 getWeather("Póvoa de Varzim");
 showCurrentDate();
