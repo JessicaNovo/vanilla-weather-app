@@ -82,6 +82,7 @@ function displayWeather(response) {
     `https://openweathermap.org/img/wn/${iconCode}@2x.png`
   );
   weatherIcon.setAttribute("alt", response.data.weather[0].main);
+  celsiusLink.classList.add("active");
 }
 
 function convertSunHours(response) {
@@ -124,12 +125,16 @@ function convertToFahrenheit(event) {
   let currentTemperature = document.querySelector("#current-temperature");
   let degreesFahrenheit = degreesCelsius * (9 / 5) + 32;
   currentTemperature.innerHTML = Math.round(degreesFahrenheit);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 
 function convertToCelsius(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(degreesCelsius);
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
 }
 
 let degreesCelsius = null;

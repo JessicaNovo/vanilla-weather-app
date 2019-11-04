@@ -75,6 +75,27 @@ h2 {
   margin-left: 5px;
 }
 
+.units a {
+  color: #293a80;
+}
+
+.units a:hover {
+  color: #f39422;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.units .active {
+  color: #010038;
+  font-weight: 900;
+}
+
+.units .active:hover {
+  color: #010038;
+  font-weight: 900;
+  cursor: default;
+}
+
 .weather-details {
   display: block;
   text-align: left;
@@ -86,4 +107,14 @@ h2 {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.code a {
+  color: #537ec5;
+}
+
+.code a:hover {
+  color: #537ec5;
+  font-weight: 800;
+  text-decoration: none;
 }
